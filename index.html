@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="it">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scegli il tuo cucciolo</title><link rel="stylesheet" href="style.css"></head>
+<body><div class="container"><h1>Scegli il tuo cucciolo</h1>
+<h2>Seleziona l'animale</h2>
+<select id="animalSelect"><option value="dog">Cane</option><option value="cat">Gatto</option></select>
+<h2>Seleziona la razza</h2><select id="breedSelect"></select>
+<button onclick="startGame()" class="start-btn">Inizia</button></div>
+<script>
+const breeds={dog:["labrador","husky","poodle","frenchbulldog"],cat:["european","siamese","mainecoon","british"]};
+const breedNames={labrador:"Labrador",husky:"Husky",poodle:"Barboncino",frenchbulldog:"Bulldog Francese",
+european:"Europeo",siamese:"Siamese",mainecoon:"Maine Coon",british:"British Shorthair"};
+const animalSelect=document.getElementById('animalSelect');
+const breedSelect=document.getElementById('breedSelect');
+function updateBreeds(){const s=animalSelect.value;breedSelect.innerHTML="";
+breeds[s].forEach(b=>{let o=document.createElement('option');o.value=b;o.textContent=breedNames[b];breedSelect.appendChild(o);});}
+function startGame(){localStorage.setItem("chosenAnimal",animalSelect.value);
+localStorage.setItem("chosenBreed",breedSelect.value);window.location.href="game.html";}
+updateBreeds();
+</script></body></html>
